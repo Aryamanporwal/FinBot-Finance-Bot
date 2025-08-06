@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Auth from "./pages/Auth";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home"
 
-function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/users`)
-      .then(res => setUsers(res.data))
-      .catch(err => console.error(err));
-  }, []);
-
+const App = () => {
   return (
-    <div>
-      <h1>Hi</h1>
-    </div>
+    <>
+    
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/auth" element={<Auth />} />
+    </Routes>
+   
+    </>
   );
-}
+};
 
 export default App;

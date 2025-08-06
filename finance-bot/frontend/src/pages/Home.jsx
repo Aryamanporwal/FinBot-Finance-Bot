@@ -55,11 +55,11 @@ const FinBotHomepage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-xl">
               <h1 className="text-5xl lg:text-6xl text-gray-900 mb-6 leading-tight">
-                Your ideas,<br />
-                <span className="font-light">amplified</span>
+                Your finances,<br />
+                <span className="font-light">optimized</span>
               </h1>
               <p className="text-xl text-gray-600 mb-10">
-                Privacy-first AI that helps you create in confidence.
+                AI-powered personal finance advisor with real-time market insights and sentiment analysis.
               </p>
               
               {/* Login Options */}
@@ -103,39 +103,30 @@ const FinBotHomepage = () => {
             <div className="relative">
               <div className="bg-gray-50 rounded-xl p-6 shadow-lg">
                 <div className="text-sm text-gray-600 mb-3">
-                  FinBot, can you help me find any performance improvements in this code?
+                  FinBot, analyze my portfolio and suggest optimizations based on current market sentiment.
                 </div>
                 <div className="text-sm text-gray-800 mb-4 font-medium">
-                  All set. Here's the optimized code:
+                  Based on market analysis, here are your personalized recommendations:
                 </div>
-                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-xs overflow-x-auto">
-                  <div className="text-purple-400">import</div> <span className="text-white">pandas</span>
+                <div className="bg-gray-900 text-green-400 p-4 rounded-lg text-xs overflow-x-auto space-y-2">
+                  <div className="text-blue-400">Portfolio Analysis:</div>
+                  <div className="text-white ml-2">• Tech sector: 45% (Reduce to 35%)</div>
+                  <div className="text-white ml-2">• Healthcare: 15% (Increase to 20%)</div>
+                  <div className="text-white ml-2">• Bonds: 25% (Maintain current)</div>
                   <br />
-                  <div className="text-blue-400">class</div> <span className="text-yellow-300">Reader</span><span className="text-white">:</span>
+                  <div className="text-yellow-300">Market Sentiment:</div>
+                  <div className="text-white ml-2">• Overall: Bullish (Score: 7.2/10)</div>
+                  <div className="text-white ml-2">• Tech volatility detected ⚠️</div>
                   <br />
-                  <span className="text-white ml-4">def __init__(self, csv_file):</span>
-                  <br />
-                  <span className="text-white ml-8">self.data = pd.read_csv(csv_file)</span>
-                  <br />
-                  <br />
-                  <span className="text-white">def</span> <span className="text-yellow-300">calculate</span><span className="text-white">(self, input):</span>
-                  <br />
-                  <span className="text-white ml-4">optimized = input * 2 if input &lt; 3 else input</span>
-                  <br />
-                  <span className="text-white ml-4">result = self.data.sum().optimize()</span>
-                  <br />
-                  <br />
-                  <div className="text-blue-400">class</div> <span className="text-yellow-300">NewReader</span><span className="text-white">(Reader):</span>
-                  <br />
-                  <span className="text-white ml-4">def __init__(self, csv_file, num_hidden):</span>
-                  <br />
-                  <span className="text-white ml-8">super().__init__(csv_file)</span>
+                  <div className="text-purple-400">Recommendations:</div>
+                  <div className="text-white ml-2">• Rebalance: $5,000 tech → healthcare</div>
+                  <div className="text-white ml-2">• Risk level: Moderate (aligned)</div>
                 </div>
                 <div className="flex items-center mt-4 text-sm text-gray-500">
                   <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-2">
                     <span className="text-orange-600 text-xs">F</span>
                   </div>
-                  Reply to FinBot...
+                  Ask about your financial goals...
                 </div>
               </div>
             </div>
@@ -148,7 +139,7 @@ const FinBotHomepage = () => {
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-5xl font-light text-gray-900 mb-6">Meet FinBot</h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            FinBot is a next generation AI assistant built by Anthropic and trained to be safe, accurate, and secure to help you do your best work.
+            FinBot is an advanced AI-powered personal finance advisor that combines market sentiment analysis, anomaly detection, and personalized investment recommendations to help you make smarter financial decisions.
           </p>
         </div>
       </section>
@@ -173,18 +164,28 @@ const FinBotHomepage = () => {
                 </div>
               </div>
               
-              <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
                 <div className="grid grid-cols-12 grid-rows-8 gap-1 h-40">
-                  {Array.from({ length: 96 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="bg-blue-400 rounded-sm opacity-60"
-                      style={{
-                        opacity: Math.random() * 0.8 + 0.2,
-                        backgroundColor: i % 3 === 0 ? '#60a5fa' : i % 3 === 1 ? '#34d399' : '#fbbf24'
-                      }}
-                    />
-                  ))}
+                  {Array.from({ length: 96 }).map((_, i) => {
+                    const row = Math.floor(i / 12);
+                    const isUpTrend = row < 4;
+                    const opacity = isUpTrend ? Math.random() * 0.6 + 0.4 : Math.random() * 0.4 + 0.2;
+                    const color = isUpTrend ? '#10b981' : '#ef4444'; // Green for bullish, red for bearish
+                    return (
+                      <div 
+                        key={i} 
+                        className="rounded-sm"
+                        style={{
+                          opacity,
+                          backgroundColor: i % 2 === 0 ? color : '#3b82f6' // Mix of sentiment colors and market data
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+                <div className="text-xs text-gray-400 mt-2 flex justify-between">
+                  <span>Market Sentiment: Bullish 📈</span>
+                  <span>Portfolio Risk: Low</span>
                 </div>
               </div>
               
@@ -197,35 +198,41 @@ const FinBotHomepage = () => {
             </div>
             
             {/* Features List */}
-            <div className="space-y-10">
+              <div className="space-y-10">
               <div>
                 <div className="flex items-center mb-4">
                   <svg className="w-6 h-6 text-gray-700 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
-                  <h3 className="text-2xl font-medium text-gray-900">Create with FinBot</h3>
+                  <h3 className="text-xl font-medium text-gray-900">Smart Investment Dashboard</h3>
                 </div>
-                <p className="text-gray-600 text-lg">
-                  Draft and iterate on websites, graphics, documents, and code alongside your chat with Artifacts.
+                <p className="text-gray-600 text-m">
+                  Visualize your portfolio composition, market sentiment scores, anomaly alerts, and financial goal progress through interactive charts and real-time metrics.
                 </p>
               </div>
               
               <div>
                 <div className="flex items-center mb-4">
                   <svg className="w-6 h-6 text-gray-700 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <h3 className="text-2xl font-medium text-gray-900">Bring your knowledge</h3>
+                  <h3 className="text-xl font-medium text-gray-900">Personalized Financial Planning</h3>
                 </div>
+                <p className="text-gray-600 text-m">
+                  Get tailored investment recommendations based on your risk profile, financial goals, and live market signals using advanced AI models.
+                </p>
               </div>
               
               <div>
                 <div className="flex items-center mb-4">
                   <svg className="w-6 h-6 text-gray-700 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
-                  <h3 className="text-2xl font-medium text-gray-900">Share and collaborate with your team</h3>
+                  <h3 className="text-xl font-medium text-gray-900">Risk Detection & Market Alerts</h3>
                 </div>
+                <p className="text-gray-600 text-m">
+                  Advanced anomaly detection identifies sudden market movements and asset volatility to alert you instantly about potential risks and opportunities.
+                </p>
               </div>
             </div>
           </div>
@@ -271,11 +278,11 @@ const FinBotHomepage = () => {
               
               <ul className="space-y-4 mb-8">
                 {[
-                  'Chat on web, iOS, and Android',
-                  'Generate code and visualize data',
-                  'Write, edit, and iterate with Artifacts',
-                  'Analyze text and images',
-                  'Ability to search the web'
+                  'Access to basic portfolio tracking',
+                  'Daily market sentiment updates',
+                  'Simple financial goal planning',
+                  'Basic investment recommendations',
+                  'Mobile app access'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -312,14 +319,14 @@ const FinBotHomepage = () => {
               
               <ul className="space-y-4 mb-8">
                 {[
-                  'More usage*',
-                  'Access FinBot Code directly in your terminal',
-                  'Access to Unlimited Projects',
-                  'Access to Artifacts',
-                  'Connect Google Workspace',
-                  'Connect any context through Integrations',
-                  'Extended thinking for complex work',
-                  'Ability to use more FinBot models'
+                  'Advanced portfolio analytics & optimization',
+                  'Real-time market sentiment analysis',
+                  'Anomaly detection & risk alerts',
+                  'AI-powered voice financial assistant',
+                  'Comprehensive goal forecasting',
+                  'Social media sentiment tracking',
+                  'Advanced investment recommendations',
+                  'Priority customer support'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -352,10 +359,12 @@ const FinBotHomepage = () => {
               
               <ul className="space-y-4 mb-8">
                 {[
-                  'Choose 5x or 20x more usage than Pro*',
-                  'Higher output limits for all tasks',
-                  'Early access to enhanced FinBot features',
-                  'Priority access at high traffic times'
+                  'Unlimited portfolio tracking & analysis',
+                  'Institutional-grade market data access',
+                  'Advanced machine learning algorithms',
+                  'Custom risk modeling for large portfolios',
+                  'White-label solutions available',
+                  'Dedicated financial advisor support'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -393,15 +402,15 @@ const FinBotHomepage = () => {
             {[
               {
                 question: "What is FinBot and how does it work?",
-                answer: "FinBot is an AI assistant that helps with various tasks including writing, analysis, coding, and creative projects. It uses advanced language models to understand and respond to your queries."
+                answer: "FinBot is an AI-powered personal finance advisor that combines market sentiment analysis, anomaly detection, and personalized investment recommendations. It analyzes financial news, social media, and market data to provide real-time insights and help you make smarter investment decisions."
               },
               {
-                question: "What should I use FinBot for?",
-                answer: "You can use FinBot for writing assistance, data analysis, coding help, research, creative projects, and much more. It's designed to be a versatile AI companion for work and personal tasks."
+                question: "How does FinBot analyze market sentiment?",
+                answer: "FinBot uses advanced natural language processing to extract sentiment from financial news, social media platforms like Twitter/X, Reddit, and financial forums. This data is processed in real-time to provide market sentiment scores that influence investment recommendations."
               },
               {
-                question: "How much does it cost to use?",
-                answer: "FinBot offers multiple pricing tiers: Free (basic features), Pro ($17/month), and Max (from $100/month). Each tier offers different usage limits and features."
+                question: "Can FinBot help me plan for specific financial goals?",
+                answer: "Yes! FinBot offers comprehensive goal forecasting for major life events like buying a home, planning for retirement, travel, or education. It estimates savings requirements and projects capital growth based on your current portfolio and market conditions."
               }
             ].map((faq, index) => (
               <div key={index} className="border-b border-gray-200 pb-6">
@@ -438,7 +447,7 @@ const FinBotHomepage = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center mb-6">
-                <div>
+                <div >
                   <img src="/public/logo.png" alt="FinBot" className="h-13 w-13 mr-2" />
                 </div>
                 <span className="text-xl font-medium">FinBot</span>
@@ -474,7 +483,7 @@ const FinBotHomepage = () => {
           
           <div className="border-t border-gray-800 pt-8">
             <p className="text-center text-gray-500 text-sm">
-              © 2025 FinBot. All rights reserved.
+              © 2024 FinBot. All rights reserved.
             </p>
           </div>
         </div>
